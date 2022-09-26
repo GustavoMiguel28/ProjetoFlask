@@ -25,12 +25,12 @@ cursor.execute("USE `jogoteca`;")
 
 # criando tabelas
 TABLES = {}
-TABLES['Jogos'] = ('''
-      CREATE TABLE `jogos` (
+TABLES['Lista'] = ('''
+      CREATE TABLE `lista` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
       `nome` varchar(50) NOT NULL,
       `categoria` varchar(40) NOT NULL,
-      `console` varchar(20) NOT NULL,
+      `mercado` varchar(20) NOT NULL,
       PRIMARY KEY (`id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
@@ -63,27 +63,15 @@ usuarios = [
 ]
 cursor.executemany(usuario_sql, usuarios)
 
-cursor.execute('select * from jogoteca.usuarios')
-print(' -------------  Usuários:  -------------')
-for user in cursor.fetchall():
-    print(user[1])
 
 # inserindo jogos
-jogos_sql = 'INSERT INTO jogos (nome, categoria, console) VALUES (%s, %s, %s)'
-jogos = [
-      ('Tetris', 'Puzzle', 'Atari'),
-      ('God of War', 'Hack n Slash', 'PS2'),
-      ('Mortal Kombat', 'Luta', 'PS2'),
-      ('Valorant', 'FPS', 'PC'),
-      ('Crash Bandicoot', 'Hack n Slash', 'PS2'),
-      ('Need for Speed', 'Corrida', 'PS2'),
+lista_sql = 'INSERT INTO jogos (nome, categoria, console) VALUES (%s, %s, %s)'
+lista = [
+      ('Arroz', 'Alimento', 'Extra'),
+      ('Meia', 'Vestuario', 'C&A'),
+      ('Toalha', 'Higiene pessoal', 'Carrefour'),
 ]
-cursor.executemany(jogos_sql, jogos)
-
-cursor.execute('select * from jogoteca.jogos')
-print(' -------------  Jogos:  -------------')
-for jogo in cursor.fetchall():
-    print(jogo[1])
+cursor.executemany(lista_sql, lista)
 
 # commitando se não nada tem efeito
 conn.commit()
