@@ -1,6 +1,6 @@
 import os
 
-SECRET_KEY = 'alura'
+SECRET_KEY = '23jkn54'
 
 SQLALCHEMY_DATABASE_URI = \
     '{SGBD}://{usuario}:{senha}@{servidor}/{database}'.format(

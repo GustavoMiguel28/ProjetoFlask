@@ -1,4 +1,4 @@
-from jogoteca import app
+from listaCompras import app
 from flask import render_template, request, redirect, session, flash, url_for
 from models import Usuarios
 from helpers import FormularioUsuario
